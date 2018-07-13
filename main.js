@@ -18,7 +18,7 @@ $(document).ready( function() {
         }
       } else {
         var value = element.val();
-        if (name == "email") {
+        if (name == "email" || name == "xmpp") {
           value = value.replace("@", "[]");
         }
 

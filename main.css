@@ -26,3 +26,7 @@ small {
   color: #c0c0c0;
   text-decoration: underline;
 }
+
+#result {
+  height: 100px;
+}
