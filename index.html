@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+    <title>Tor ContactInfo Generator</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <h1>Tor ContactInfo Generator</h1>
+        <p>Generates the ContactInfo field set in a Tor node's field based on <a href="https://github.com/nusenu/ContactInfo-Information-Sharing-Specification">this format proposal</a></p>
+      </div>
+      <div class="row">
+        <form id="contactinfo">
+          <div class="card">
+            <div class="card-header">Contact Info</div>
+            <div class="card-body">
+              <div class="form-group row">
+                <label for="email" class="col-sm-3 col-form-label">Email </label>
+                <div class="col-sm-9">
+                  <input type="email" class="form-control" id="email" name="email">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="operatorurl" class="col-sm-3 col-form-label">Operator URL </label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="operatorurl" name="operatorurl" maxlength="253">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="gpg" class="col-sm-3 col-form-label">GPG Fingerprint </label>
+                <div class="col-sm-9">
+                  <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">0x</div>
+                    </div>
+                    <input type="text" class="form-control" id="gpg" name="gpg" aria-describedby="gpg-help" maxlength="40">
+                  </div>
+                  <small id="gpg-help" class="form-text text-muted">PGP key fingerprint (long form) without spaces. Case insensitive.</small>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="keybase" class="col-sm-3 col-form-label">Keybase Username </label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="keybase" name="keybase" maxlength="49">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="twitter" class="col-sm-3 col-form-label">Twitter Username </label>
+                <div class="col-sm-9">
+                  <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">@</div>
+                    </div>
+                    <input type="text" class="form-control" id="twitter" name="twitter" maxlength="15">
+                  </div>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="mastodon" class="col-sm-3 col-form-label">Mastodon Profile </label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="mastodon" name="mastodon" maxlength="253">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="xmpp" class="col-sm-3 col-form-label">XMPP Handle </label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="xmpp" name="xmpp" maxlength="253">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="ricochet" class="col-sm-3 col-form-label">Ricochet Handle </label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="ricochet" name="ricochet" maxlength="16">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="bitmessage" class="col-sm-3 col-form-label">Bitmessage Handle </label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="bitmessage" name="bitmessage">
+                </div>
+              </div>
+            </div>
+          </div>
+          <br/>
+          <div class="card">
+            <div class="card-header">Hoster Information</div>
+            <div class="card-body">
+              <div class="form-group row">
+                <label for="hoster" class="col-sm-3 col-form-label">Hoster </label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="hoster" name="hoster" aria-describedby="hoster-help" maxlength="253">
+                  <small id="hoster-help" class="form-text text-muted">Commercial hoster domain where this server has been ordered. This is supposed to help other relay operators and future relay operators to find hosting providers.</small>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="cost" class="col-sm-3 col-form-label">Monthly Cost </label>
+                <div class="col-sm-9"> <!-- TODO: add currency drop down right to the value text box -->
+                  <input type="text" class="form-control" id="cost" name="cost" aria-describedby="cost-help" maxlength="12">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="uplinkbw" class="col-sm-3 col-form-label">Uplink Bandwidth (Mbit/s)</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="uplinkbw" name="uplinkbw" aria-describedby="uplinkbw-help" maxlength="6">
+                  <small id="uplinkbw-help" class="form-text text-muted">Logical network interface speed in Mbit/s (1Mbit/s = 1 000 000 Bit/s) or the value of RelayBandwidthRate in your torrc setting (whatever is smaller). For asymetrical uplinks specify the lower of up- and download bandwidth.</small>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="trafficacct" class="col-sm-3 col-form-label">Traffic Accounting</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="trafficacct" name="trafficacct" aria-describedby="trafficacct-help" maxlength="9">
+                  <small id="trafficacct-help" class="form-text text-muted">States if this is an unmetered or metered offering. In case of metered bandwidth the monthly included outbound (TX) traffic in GiB (GibiByte) MUST be provided. If no bandwidth is included, this value MUST be set to 0. If the hoster meters in+outbound the hoster provided value must be divided by two.<br/><br/>On a server with multiple tor instances the total available monthly traffic of the server MUST be divided by the number of tor relay instances running on it.</small>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="memory" class="col-sm-3 col-form-label">Memory (MB)</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="memory" name="memory" aria-describedby="memory-help" maxlength="9">
+                  <small id="memory-help" class="form-text text-muted">Non-persistent memory (RAM) available on this server - measured in MB (Mebibytes). (this is the output of 'free -m' on most Unix-based systems.)</small>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="cpu" class="col-sm-3 col-form-label">CPU</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="cpu" name="cpu" aria-describedby="cpu-help" maxlength="14">
+                  <small id="cpu-help" class="form-text text-muted">Only relevant for relays running on bare metal. String without spaces describing the used CPU model. Example: i5-8400</small>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="virtualization" class="col-sm-3 col-form-label">Virtualization</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="virtualization" name="virtualization" aria-describedby="virtualization-help">
+                  <small id="virtualization-help" class="form-text text-muted">States the underlying virtualization technology used on which the OS is running. Use "baremetal" for bare-metal servers (not virtualized). Example: kvm</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br/>
+          <div class="card">
+            <div class="card-header">Donation Information</div>
+            <div class="card-body">
+              <div class="form-group row">
+                <label for="bitcoin" class="col-sm-3 col-form-label">Bitcoin Address</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="bitcoin" name="bitcoin" aria-describedby="bitcoin-help" maxlength="35">
+                  <small id="bitcoin-help" class="form-text text-muted">Bitcoin address where people are expected to send donations to support the operation of this tor relay.</small>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="zcash" class="col-sm-3 col-form-label">ZCash Address</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="zcash" name="zcash" aria-describedby="zcash-help" maxlength="95">
+                  <small id="zcash-help" class="form-text text-muted">ZCash address where people are expected send donations to support the operation of this tor relay.</small>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="donationurl" class="col-sm-3 col-form-label">Donation URL</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="donationurl" name="donationurl" aria-describedby="donationurl-help" maxlength="253">
+                  <small id="donationurl-help" class="form-text text-muted">URL pointing to a website that contains donation information to support this tor relay. This SHOULD be an HTTPS url.</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br/>
+          <div class="card">
+            <div class="card-header">Tor Configuration</div>
+            <div class="card-body">
+              <div class="form-group row">
+                <label for="offlinemasterkey" class="col-sm-3 col-form-label">Offline Master Key</label>
+                <div class="col-sm-9">
+                  <input type="checkbox" class="form-control" id="offlinemasterkey" name="offlinemasterkey" aria-describedby="offlinemasterkey-help" style="margin-top: 10px">
+                  <small id="offlinemasterkey-help" class="form-text text-muted">Single character stating whether the <a href="https://www.torproject.org/docs/tor-manual.html.en#OfflineMasterKey">OfflineMasterKey</a> feature is enabled on this tor instance or not</small>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="signingkeylifetime" class="col-sm-3 col-form-label">Signing Key Lifetime</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="signingkeylifetime" name="signingkeylifetime" aria-describedby="signingkeylifetime-help" maxlength="5">
+                  <small id="signingkeylifetime-help" class="form-text text-muted">Integer stating the <a href="https://www.torproject.org/docs/tor-manual.html.en#SigningKeyLifetime">signing key renewal interval</a> in days</small>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="sandbox" class="col-sm-3 col-form-label">Sandbox</label>
+                <div class="col-sm-9">
+                  <input type="checkbox" class="form-control" id="sandbox" name="sandbox" aria-describedby="sandbox-help" style="margin-top: 10px">
+                  <small id="sandbox-help" class="form-text text-muted">Single character stating whether this instance runs with <a href="https://www.torproject.org/docs/tor-manual.html.en#Sandbox">Sandbox</a> enabled</small>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="scheduler" class="col-sm-3 col-form-label">Scheduler</label>
+                <div class="col-sm-9">
+                  <input type="checkbox" class="form-control" id="scheduler" name="scheduler" aria-describedby="scheduler-help" maxlength="49">
+                  <small id="scheduler-help" class="form-text text-muted">Value as configured with the torrc <a href="https://www.torproject.org/docs/tor-manual-dev.html.en#Schedulers">scheduler</a> option or "default" for no explicit configuration. This field MUST be omitted on tor releases that do not support this feature (<0.3.2.1-alpha)</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br/>
+          <div class="card">
+            <div class="card-header">OS Information</div>
+            <div class="card-body">
+              <div class="form-group row">
+                <label for="os" class="col-sm-3 col-form-label">Operating System</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="os" name="os" aria-describedby="os-help" maxlength="20">
+                  <small id="os-help" class="form-text text-muted">String stating which OS distribution and version is used. Distribution and version is separated with a "/" sign. On platforms where the file <a href="https://www.freedesktop.org/software/systemd/man/os-release.html">/etc/os-release</a> is available os is created by taking the ID and VERSION_ID values. The version identifier is optional and may be omitted. The string is case-insensitive. For example: OpenBSD/6.1 or debian/9</small>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="form-group row">
+                <label for="dnslocation" class="col-sm-3 col-form-label">DNS Location</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="dnslocation" name="dnslocation" aria-describedby="dnslocation-help">
+                  <small id="dnslocation-help" class="form-text text-muted">
+                    This field is only relevant for exit relays, non-exit relays SHOULD NOT set this field.
+                    String describing the location of the used DNS resolver in relation to the exit relay.
+
+                    <ul>
+                      <li><b>local</b> means the resolver is running on the same host as the tor process.</li>
+                      <li><b>sameas</b> means the resolver is running on the same autonomous system as the exit relay and queries to the resolver do not cross another AS before reaching the resolver.</li>
+                      <li><b>remote</b> means the resolver is running on a system outside the exit relay's autonomous system</li>
+                    </ul>
+
+                    Multiple options may apply and MUST be separated using a comma. The order is relevant, the primary resolver MUST appear first followed by fallback resolvers.
+                  </small>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="dnsqname" class="col-sm-3 col-form-label">DNS QName</label>
+                <div class="col-sm-9">
+                  <input type="checkbox" class="form-control" id="dnsqname" name="dnsqname" aria-describedby="dnsqname-help">
+                  <small id="dnsqname-help" class="form-text text-muted">
+                    This field is only relevant for exit relays, non-exit relays SHOULD NOT set this field.
+                    Character stating whether this exit relay is performing DNS QNAME minimization ("y") or not ("n"). QNAME minimization is defined in <a href="https://datatracker.ietf.org/doc/rfc7816/">RFC7816</a>
+                  </small>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="dnssec" class="col-sm-3 col-form-label">DNS Sec</label>
+                <div class="col-sm-9">
+                  <input type="checkbox" class="form-control" id="dnssec" name="dnssec" aria-describedby="dnssec-help">
+                  <small id="dnssec-help" class="form-text text-muted">
+                    This field is only relevant for exit relays, non-exit relays SHOULD NOT set this field. States if this relay performs DNSSEC validation.
+                  </small>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="dnslocalrootzone" class="col-sm-3 col-form-label">DNS Local Root Zone</label>
+                <div class="col-sm-9">
+                  <input type="checkbox" class="form-control" id="dnslocalrootzone" name="dnslocalrootzone" aria-describedby="dnslocalrootzone-help">
+                  <small id="dnslocalrootzone-help" class="form-text text-muted">
+                    This field is only relevant for exit relays, non-exit relays SHOULD NOT set this field.
+
+                    States whether this exit relay is running the DNS root zone on loopback (checked) to avoid latency and information disclosure to DNS root servers or not (unchecked). This is defined in <a href="https://tools.ietf.org/html/rfc7706">RFC7706</a>.
+                  </small>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="tls" class="col-sm-3 col-form-label">TLS Library Used</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="tls" name="tls" aria-describedby="tls-help" maxlength="14">
+                  <small id="tls-help" class="form-text text-muted">String stating which tls library is used. For example: openssl</small>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="dnslocalrootzone" class="col-sm-3 col-form-label">AES-NI</label>
+                <div class="col-sm-9">
+                  <input type="checkbox" class="form-control" id="aesni" name="aesni" aria-describedby="aesni-help">
+                  <small id="aesni-help" class="form-text text-muted">
+                    Character stating whether AES-NI is available and used (checked) or not available/not used (unchecked)
+                  </small>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="autoupdate" class="col-sm-3 col-form-label">Auto Update</label>
+                <div class="col-sm-9">
+                  <input type="checkbox" class="form-control" id="autoupdate" name="autoupdate" aria-describedby="autoupdate-help">
+                  <small id="autoupdate-help" class="form-text text-muted">
+                    Single character stating whether automatic (unnattended) updates are enabled or not
+                  </small>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="confmgmt" class="col-sm-3 col-form-label">Configuration Management</label>
+                <div class="col-sm-9">
+                  <input type="input" class="form-control" id="confmgmt" name="confmgmt" aria-describedby="confmgmt-help" maxlength="15">
+                  <small id="confmgmt-help" class="form-text text-muted">
+                    States what configuration managment system is used. Set to "manual" for no configuration management. For example: ansible,chef,puppet
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br/>
+          <button id="generate-button" type="submit" class="btn btn-primary">Generate</button>
+          <br/><br/>
+          <textarea id="result" readonly style="width: 100%; background: #c0c0c0; border: 0px">
+
+          </textarea>
+        </form>
+      </div>
+      <div class="row">
+        <p class="text-center footer">
+          &copy; 2018
+          | Based on a <a href="https://github.com/nusenu/ContactInfo-Information-Sharing-Specification">proposal</a> by <a href="https://twitter.com/nusenu_">Nusenu</a>
+          | Created by <a href="https://eran.sandler.co.il">Eran Sandler</a>
+          | <a href="https://github.com/erans/torcontactinfogenerator">Code repo</a>
+        </p>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

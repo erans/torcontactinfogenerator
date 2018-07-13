@@ -1,0 +1,28 @@
+.container {
+  max-width: 680px;
+}
+
+#contactinfo {
+  width: 660px;
+}
+
+label {
+  font-size: 0.9em !important;
+}
+
+small {
+  font-size: 0.7em !important;
+}
+
+.footer {
+  color: #c0c0c0;
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+  font-size: 10px;
+}
+
+.footer a {
+  color: #c0c0c0;
+  text-decoration: underline;
+}
