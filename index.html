@@ -95,7 +95,7 @@
             <div class="card-header">Hoster Information</div>
             <div class="card-body">
               <div class="form-group row">
-                <label for="hoster" class="col-sm-3 col-form-label">Hoster </label>
+                <label for="hoster" class="col-sm-3 col-form-label">Where did you order your server? </label>
                 <div class="col-sm-9">
                   <input type="text" class="form-control" id="hoster" name="hoster" aria-describedby="hoster-help" maxlength="253">
                   <small id="hoster-help" class="form-text text-muted">Commercial hoster domain where this server has been ordered. This is supposed to help other relay operators and future relay operators to find hosting providers.</small>
@@ -176,7 +176,7 @@
             <div class="card-header">Tor Configuration</div>
             <div class="card-body">
               <div class="form-group row">
-                <label for="offlinemasterkey" class="col-sm-3 col-form-label">Offline Master Key</label>
+                <label for="offlinemasterkey" class="col-sm-3 col-form-label">Does this relay run in OfflineMasterKey mode?</label>
                 <div class="col-sm-9">
                   <input type="checkbox" class="form-control" id="offlinemasterkey" name="offlinemasterkey" aria-describedby="offlinemasterkey-help" style="margin-top: 10px">
                   <small id="offlinemasterkey-help" class="form-text text-muted">Single character stating whether the <a href="https://www.torproject.org/docs/tor-manual.html.en#OfflineMasterKey">OfflineMasterKey</a> feature is enabled on this tor instance or not</small>
@@ -190,14 +190,14 @@
                 </div>
               </div>
               <div class="form-group row">
-                <label for="sandbox" class="col-sm-3 col-form-label">Sandbox</label>
+                <label for="sandbox" class="col-sm-3 col-form-label">Has this relay Sandboxing enabled?</label>
                 <div class="col-sm-9">
                   <input type="checkbox" class="form-control" id="sandbox" name="sandbox" aria-describedby="sandbox-help" style="margin-top: 10px">
                   <small id="sandbox-help" class="form-text text-muted">Single character stating whether this instance runs with <a href="https://www.torproject.org/docs/tor-manual.html.en#Sandbox">Sandbox</a> enabled</small>
                 </div>
               </div>
               <div class="form-group row">
-                <label for="scheduler" class="col-sm-3 col-form-label">Scheduler</label>
+                <label for="scheduler" class="col-sm-3 col-form-label">What Scheduler does the relay use?</label>
                 <div class="col-sm-9">
                   <input type="checkbox" class="form-control" id="scheduler" name="scheduler" aria-describedby="scheduler-help" maxlength="49">
                   <small id="scheduler-help" class="form-text text-muted">Value as configured with the torrc <a href="https://www.torproject.org/docs/tor-manual-dev.html.en#Schedulers">scheduler</a> option or "default" for no explicit configuration. This field MUST be omitted on tor releases that do not support this feature (<0.3.2.1-alpha)</small>
@@ -219,7 +219,7 @@
             </div>
             <div class="card-body">
               <div class="form-group row">
-                <label for="dnslocation" class="col-sm-3 col-form-label">DNS Location</label>
+                <label for="dnslocation" class="col-sm-3 col-form-label">Where is the resolver located in relation to this exit relay?</label>
                 <div class="col-sm-9">
                   <input type="text" class="form-control" id="dnslocation" name="dnslocation" aria-describedby="dnslocation-help">
                   <small id="dnslocation-help" class="form-text text-muted">
@@ -237,7 +237,7 @@
                 </div>
               </div>
               <div class="form-group row">
-                <label for="dnsqname" class="col-sm-3 col-form-label">DNS QName</label>
+                <label for="dnsqname" class="col-sm-3 col-form-label">Does your resolver perform DNS QNAME minimization?</label>
                 <div class="col-sm-9">
                   <input type="checkbox" class="form-control" id="dnsqname" name="dnsqname" aria-describedby="dnsqname-help">
                   <small id="dnsqname-help" class="form-text text-muted">
@@ -247,7 +247,7 @@
                 </div>
               </div>
               <div class="form-group row">
-                <label for="dnssec" class="col-sm-3 col-form-label">DNS Sec</label>
+                <label for="dnssec" class="col-sm-3 col-form-label">Does your resolver perform DNSSEC validation?</label>
                 <div class="col-sm-9">
                   <input type="checkbox" class="form-control" id="dnssec" name="dnssec" aria-describedby="dnssec-help">
                   <small id="dnssec-help" class="form-text text-muted">
@@ -256,7 +256,7 @@
                 </div>
               </div>
               <div class="form-group row">
-                <label for="dnslocalrootzone" class="col-sm-3 col-form-label">DNS Local Root Zone</label>
+                <label for="dnslocalrootzone" class="col-sm-3 col-form-label">Does your resolver run the root zone on loopback?</label>
                 <div class="col-sm-9">
                   <input type="checkbox" class="form-control" id="dnslocalrootzone" name="dnslocalrootzone" aria-describedby="dnslocalrootzone-help">
                   <small id="dnslocalrootzone-help" class="form-text text-muted">
@@ -283,7 +283,7 @@
                 </div>
               </div>
               <div class="form-group row">
-                <label for="autoupdate" class="col-sm-3 col-form-label">Auto Update</label>
+                <label for="autoupdate" class="col-sm-3 col-form-label">Is your OS configured to install updates automatically?</label>
                 <div class="col-sm-9">
                   <input type="checkbox" class="form-control" id="autoupdate" name="autoupdate" aria-describedby="autoupdate-help">
                   <small id="autoupdate-help" class="form-text text-muted">
@@ -292,7 +292,7 @@
                 </div>
               </div>
               <div class="form-group row">
-                <label for="confmgmt" class="col-sm-3 col-form-label">Configuration Management</label>
+                <label for="confmgmt" class="col-sm-3 col-form-label">What configuration management do you use?</label>
                 <div class="col-sm-9">
                   <input type="input" class="form-control" id="confmgmt" name="confmgmt" aria-describedby="confmgmt-help" maxlength="15">
                   <small id="confmgmt-help" class="form-text text-muted">
