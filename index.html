@@ -14,7 +14,9 @@
     <div class="container">
       <div class="row">
         <h1>Tor ContactInfo Generator</h1>
-        <p>Generates the ContactInfo field set in a Tor node's field based on <a href="https://github.com/nusenu/ContactInfo-Information-Sharing-Specification">this format proposal</a></p>
+        <p>This page aims to make it easy to create a ContactInfo string which is in accordance with <a href="https://github.com/nusenu/ContactInfo-Information-Sharing-Specification">this specification</a>.
+        The generator creates a single output line that can easily be copied into your relay's torrc configuration file. After changing your torrc you have to reload your tor daemon.
+        </p>
       </div>
       <div class="row">
         <form id="contactinfo">
@@ -305,6 +307,7 @@
           <br/>
           <button id="generate-button" type="submit" class="btn btn-primary">Generate</button>
           <br/><br/>
+          Copy the following line into your torrc configuration file and reload your tor daemon:
           <textarea id="result" readonly style="width: 100%; background: #c0c0c0; border: 0px">
 
           </textarea>
