@@ -21,6 +21,14 @@
       <div class="row">
         <form id="contactinfo">
           <div class="card">
+            <div class="card-header">Relay Type</div>
+            <div class="card-body">
+              <input type="radio" name="relay-type" value="exit"> Exit &nbsp;&nbsp;&nbsp;
+              <input type="radio" name="relay-type" value="no-exit" checked> Non-exit relay
+            </div>
+          </div>
+          <br/>
+          <div class="card">
             <div class="card-header">Contact Info</div>
             <div class="card-body">
               <div class="form-group row">
@@ -229,7 +237,7 @@
               </div>
             </div>
             <div class="card-body">
-              <div class="form-group row">
+              <div class="form-group row exit-relay-only">
                 <label for="dnslocation" class="col-sm-3 col-form-label">Where is the resolver located in relation to this exit relay?</label>
                 <div class="col-sm-9">
                   <input type="text" class="form-control" id="dnslocation" name="dnslocation" aria-describedby="dnslocation-help">
@@ -247,7 +255,7 @@
                   </small>
                 </div>
               </div>
-              <div class="form-group row">
+              <div class="form-group row exit-relay-only">
                 <label for="dnsqname" class="col-sm-3 col-form-label">Does your resolver perform DNS QNAME minimization?</label>
                 <div class="col-sm-9">
                   <input type="checkbox" class="form-control" id="dnsqname" name="dnsqname" aria-describedby="dnsqname-help">
@@ -257,7 +265,7 @@
                   </small>
                 </div>
               </div>
-              <div class="form-group row">
+              <div class="form-group row exit-relay-only">
                 <label for="dnssec" class="col-sm-3 col-form-label">Does your resolver perform DNSSEC validation?</label>
                 <div class="col-sm-9">
                   <input type="checkbox" class="form-control" id="dnssec" name="dnssec" aria-describedby="dnssec-help">
@@ -266,7 +274,7 @@
                   </small>
                 </div>
               </div>
-              <div class="form-group row">
+              <div class="form-group row exit-relay-only">
                 <label for="dnslocalrootzone" class="col-sm-3 col-form-label">Does your resolver run the root zone on loopback?</label>
                 <div class="col-sm-9">
                   <input type="checkbox" class="form-control" id="dnslocalrootzone" name="dnslocalrootzone" aria-describedby="dnslocalrootzone-help">

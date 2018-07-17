@@ -1,4 +1,17 @@
 $(document).ready( function() {
+  $("input[name=relay-type]").click( function(event) {
+    var nodeType = $(this).val()
+    var isExitNode = (nodeType == "exit");
+
+    $(".exit-relay-only").each(function(i, v) {
+      if (isExitNode) {
+          $(v).removeClass("hide");
+      } else {
+          $(v).addClass("hide");
+      }
+    });
+  });
+
   $("#generate-button").click(function(event) {
     var result = new Array();
     event.preventDefault();
@@ -22,7 +35,7 @@ $(document).ready( function() {
           value = value.replace("@", "[]");
         }
 
-        if (name == "cost") {          
+        if (name == "cost") {
           value = value + $("#cost-currency").val();
         }
 
@@ -36,4 +49,10 @@ $(document).ready( function() {
 
     $("#result").val(result.join(" "));
   })
+
+  $(".exit-relay-only").each(function(i, v) {
+    $(v).addClass("hide");
+  });
+
+  $($("input[name=relay-type]")[1]).click();
 });

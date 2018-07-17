@@ -30,3 +30,7 @@ small {
 #result {
   height: 100px;
 }
+
+.hide {
+  display: none;
+}
