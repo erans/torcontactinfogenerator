@@ -1,4 +1,10 @@
 $(document).ready( function() {
+  $(".currency-dropdown a").click( function(event) {
+    event.preventDefault();
+    var value = $(this).attr("value");
+    $(".curreny-button").text(value);
+  });
+
   $("input[name=relay-type]").click( function(event) {
     var nodeType = $(this).val()
     var isExitNode = (nodeType == "exit");
@@ -20,6 +26,9 @@ $(document).ready( function() {
     var inputsLength = inputs.length;
     for (var i = 0; i < inputsLength; i++) {
       var element = $(inputs[i]);
+      if (element.hasClass("dont-generate")) {
+        continue;
+      }
       var name = element.attr("id")
       var type = element.attr("type");
 
@@ -36,7 +45,7 @@ $(document).ready( function() {
         }
 
         if (name == "cost") {
-          value = value + $("#cost-currency").val();
+          value = value + $(".curreny-button").text();
         }
 
         if (value != "") {
