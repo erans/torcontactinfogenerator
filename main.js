@@ -22,6 +22,10 @@ $(document).ready( function() {
           value = value.replace("@", "[]");
         }
 
+        if (name == "cost") {          
+          value = value + $("#cost-currency").val();
+        }
+
         if (value != "") {
           result.push(name + ":" + value);
         }
