@@ -18,6 +18,15 @@ $(document).ready( function() {
     });
   });
 
+  $("input[name=trafficaccttype]").click( function(event) {
+    var value = $(this).val();
+    if (value == "metered") {
+      $("#trafficacct").removeClass("hide");
+    } else {
+      $("#trafficacct").addClass("hide");
+    }
+  });
+
   $("#generate-button").click(function(event) {
     var result = new Array();
     event.preventDefault();
@@ -52,8 +61,16 @@ $(document).ready( function() {
           result.push(name + ":" + value);
         }
       }
+    }
 
-
+    var trafficacct = $("input[name='trafficaccttype']:checked").val();    
+    if (trafficacct == "metered") {
+      var meteredValue = $("#trafficacct").val();
+      if (meteredValue != "") {
+        result.push("trafficacct:" + meteredValue);
+      }
+    } else if (trafficacct == "unmetered") {
+      result.push("trafficacct:unmetered");
     }
 
     $("#result").val(result.join(" "));
