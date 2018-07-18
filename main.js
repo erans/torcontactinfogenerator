@@ -54,7 +54,9 @@ $(document).ready( function() {
         }
 
         if (name == "cost") {
-          value = value + $(".curreny-button").text();
+          if (value != "") {
+            value = value + $(".curreny-button").text();
+          }
         }
 
         if (value != "") {
@@ -63,7 +65,7 @@ $(document).ready( function() {
       }
     }
 
-    var trafficacct = $("input[name='trafficaccttype']:checked").val();    
+    var trafficacct = $("input[name='trafficaccttype']:checked").val();
     if (trafficacct == "metered") {
       var meteredValue = $("#trafficacct").val();
       if (meteredValue != "") {
