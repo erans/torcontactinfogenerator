@@ -21,14 +21,6 @@
       <div class="row">
         <form id="contactinfo">
           <div class="card">
-            <div class="card-header">Relay Type</div>
-            <div class="card-body">
-              <input type="radio" name="relay-type" value="exit" class="dont-generate"> Exit &nbsp;&nbsp;&nbsp;
-              <input type="radio" name="relay-type" value="no-exit" class="dont-generate" checked> Non-exit relay
-            </div>
-          </div>
-          <br/>
-          <div class="card">
             <div class="card-header">Contact Info</div>
             <div class="card-body">
               <div class="form-group row">
@@ -250,6 +242,54 @@
               </div>
             </div>
             <div class="card-body">
+              <div class="form-group row">
+                <label for="tls" class="col-sm-3 col-form-label">TLS Library Used</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="tls" name="tls" aria-describedby="tls-help" maxlength="14">
+                  <small id="tls-help" class="form-text text-muted">String stating which tls library is used. For example: openssl</small>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="dnslocalrootzone" class="col-sm-3 col-form-label">AES-NI</label>
+                <div class="col-sm-9">
+                  <input type="checkbox" class="form-control" id="aesni" name="aesni" aria-describedby="aesni-help">
+                  <small id="aesni-help" class="form-text text-muted">
+                    Character stating whether AES-NI is available and used (checked) or not available/not used (unchecked)
+                  </small>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="autoupdate" class="col-sm-3 col-form-label">Is your OS configured to install updates automatically?</label>
+                <div class="col-sm-9">
+                  <input type="checkbox" class="form-control" id="autoupdate" name="autoupdate" aria-describedby="autoupdate-help">
+                  <small id="autoupdate-help" class="form-text text-muted">
+                    Single character stating whether automatic (unnattended) updates are enabled or not
+                  </small>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="confmgmt" class="col-sm-3 col-form-label">What configuration management do you use?</label>
+                <div class="col-sm-9">
+                  <input type="input" class="form-control" id="confmgmt" name="confmgmt" aria-describedby="confmgmt-help" maxlength="15">
+                  <small id="confmgmt-help" class="form-text text-muted">
+                    States what configuration managment system is used. Set to "manual" for no configuration management. For example: ansible,chef,puppet
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br/>
+          <div class="card">
+            <div class="card-header">Relay Type</div>
+            <div class="card-body">
+              <input type="radio" name="relay-type" value="exit" class="dont-generate"> Exit &nbsp;&nbsp;&nbsp;
+              <input type="radio" name="relay-type" value="no-exit" class="dont-generate" checked> Non-exit relay
+            </div>
+          </div>
+          <br/>
+          <div class="card exit-relay-only">
+            <div class="card-header">DNS Information</div>
+            <div class="card-body">
               <div class="form-group row exit-relay-only">
                 <label for="dnslocation" class="col-sm-3 col-form-label">Where is the resolver located in relation to this exit relay?</label>
                 <div class="col-sm-9">
@@ -297,40 +337,6 @@
                     This field is only relevant for exit relays, non-exit relays SHOULD NOT set this field.
 
                     States whether this exit relay is running the DNS root zone on loopback (checked) to avoid latency and information disclosure to DNS root servers or not (unchecked). This is defined in <a href="https://tools.ietf.org/html/rfc7706">RFC7706</a>.
-                  </small>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="tls" class="col-sm-3 col-form-label">TLS Library Used</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="tls" name="tls" aria-describedby="tls-help" maxlength="14">
-                  <small id="tls-help" class="form-text text-muted">String stating which tls library is used. For example: openssl</small>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="dnslocalrootzone" class="col-sm-3 col-form-label">AES-NI</label>
-                <div class="col-sm-9">
-                  <input type="checkbox" class="form-control" id="aesni" name="aesni" aria-describedby="aesni-help">
-                  <small id="aesni-help" class="form-text text-muted">
-                    Character stating whether AES-NI is available and used (checked) or not available/not used (unchecked)
-                  </small>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="autoupdate" class="col-sm-3 col-form-label">Is your OS configured to install updates automatically?</label>
-                <div class="col-sm-9">
-                  <input type="checkbox" class="form-control" id="autoupdate" name="autoupdate" aria-describedby="autoupdate-help">
-                  <small id="autoupdate-help" class="form-text text-muted">
-                    Single character stating whether automatic (unnattended) updates are enabled or not
-                  </small>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="confmgmt" class="col-sm-3 col-form-label">What configuration management do you use?</label>
-                <div class="col-sm-9">
-                  <input type="input" class="form-control" id="confmgmt" name="confmgmt" aria-describedby="confmgmt-help" maxlength="15">
-                  <small id="confmgmt-help" class="form-text text-muted">
-                    States what configuration managment system is used. Set to "manual" for no configuration management. For example: ansible,chef,puppet
                   </small>
                 </div>
               </div>
