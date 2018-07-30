@@ -71,6 +71,17 @@ $(document).ready( function() {
       }
     }
 
+    var selects = $("select");
+    var selectsLength = selects.length;
+    for (var i = 0; i < selectsLength; i++) {
+      var element = $(selects[i]);
+      var name = element.attr("id");
+      var value = element.val();
+      if (value != "dontknow") {
+        result.push(name + ":" + value);
+      }
+    }
+
     var trafficacct = $("input[name='trafficaccttype']:checked").val();
     if (trafficacct == "metered") {
       var meteredValue = $("#trafficacct").val();

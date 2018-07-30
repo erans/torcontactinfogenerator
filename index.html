@@ -202,7 +202,9 @@
               <div class="form-group row">
                 <label for="offlinemasterkey" class="col-sm-3 col-form-label">Does this relay run in OfflineMasterKey mode?</label>
                 <div class="col-sm-9">
-                  <input type="checkbox" class="form-control" id="offlinemasterkey" name="offlinemasterkey" aria-describedby="offlinemasterkey-help" style="margin-top: 10px">
+                  <input type="radio" name="offlinemasterkey" value="y" class=""> Yes &nbsp;&nbsp;&nbsp;
+                  <input type="radio" name="offlinemasterkey" value="n" class=""> No &nbsp;&nbsp;&nbsp;
+                  <input type="radio" name="offlinemasterkey" value="dontknow" class="dont-generate" checked> Don't know / Don't want to say
                   <small id="offlinemasterkey-help" class="form-text text-muted">Single character stating whether the <a href="https://www.torproject.org/docs/tor-manual.html.en#OfflineMasterKey">OfflineMasterKey</a> feature is enabled on this tor instance or not</small>
                 </div>
               </div>
@@ -216,14 +218,22 @@
               <div class="form-group row">
                 <label for="sandbox" class="col-sm-3 col-form-label">Has this relay Sandboxing enabled?</label>
                 <div class="col-sm-9">
-                  <input type="checkbox" class="form-control" id="sandbox" name="sandbox" aria-describedby="sandbox-help" style="margin-top: 10px">
+                  <input type="radio" name="sandbox" value="y" class=""> Yes &nbsp;&nbsp;&nbsp;
+                  <input type="radio" name="sandbox" value="n" class=""> No &nbsp;&nbsp;&nbsp;
+                  <input type="radio" name="sandbox" value="dontknow" class="dont-generate" checked> Don't know / Don't want to say
                   <small id="sandbox-help" class="form-text text-muted">Single character stating whether this instance runs with <a href="https://www.torproject.org/docs/tor-manual.html.en#Sandbox">Sandbox</a> enabled</small>
                 </div>
               </div>
               <div class="form-group row">
                 <label for="scheduler" class="col-sm-3 col-form-label">What Scheduler does the relay use?</label>
                 <div class="col-sm-9">
-                  <input type="checkbox" class="form-control" id="scheduler" name="scheduler" aria-describedby="scheduler-help" maxlength="49">
+                  <select class="custom-select" name="scheduler" id="scheduler">
+                    <option value="dontknow" selected>Don't know / don't want to say</option>
+                    <option value="default">default</option>
+                    <option value="KIST">KIST</option>
+                    <option value="KISTLite">KISTLite</option>
+                    <option value="Vanilla">Vanilla</option>
+                  </select>
                   <small id="scheduler-help" class="form-text text-muted">Value as configured with the torrc <a href="https://www.torproject.org/docs/tor-manual-dev.html.en#Schedulers">scheduler</a> option or "default" for no explicit configuration. This field MUST be omitted on tor releases that do not support this feature (<0.3.2.1-alpha)</small>
                 </div>
               </div>
@@ -252,16 +262,20 @@
               <div class="form-group row">
                 <label for="dnslocalrootzone" class="col-sm-3 col-form-label">AES-NI</label>
                 <div class="col-sm-9">
-                  <input type="checkbox" class="form-control" id="aesni" name="aesni" aria-describedby="aesni-help">
+                  <input type="radio" name="aesni" value="y" class=""> Yes &nbsp;&nbsp;&nbsp;
+                  <input type="radio" name="aesni" value="n" class=""> No &nbsp;&nbsp;&nbsp;
+                  <input type="radio" name="aesni" value="dontknow" class="dont-generate" checked> Don't know / Don't want to say
                   <small id="aesni-help" class="form-text text-muted">
-                    Character stating whether AES-NI is available and used (checked) or not available/not used (unchecked)
+                    States whether AES-NI is available and used (checked) or not available/not used (unchecked)
                   </small>
                 </div>
               </div>
               <div class="form-group row">
                 <label for="autoupdate" class="col-sm-3 col-form-label">Is your OS configured to install updates automatically?</label>
                 <div class="col-sm-9">
-                  <input type="checkbox" class="form-control" id="autoupdate" name="autoupdate" aria-describedby="autoupdate-help">
+                  <input type="radio" name="autoupdate" value="y" class=""> Yes &nbsp;&nbsp;&nbsp;
+                  <input type="radio" name="autoupdate" value="n" class=""> No &nbsp;&nbsp;&nbsp;
+                  <input type="radio" name="autoupdate" value="dontknow" class="dont-generate" checked> Don't know / Don't want to say
                   <small id="autoupdate-help" class="form-text text-muted">
                     Single character stating whether automatic (unnattended) updates are enabled or not
                   </small>
@@ -311,7 +325,9 @@
               <div class="form-group row exit-relay-only">
                 <label for="dnsqname" class="col-sm-3 col-form-label">Does your resolver perform DNS QNAME minimization?</label>
                 <div class="col-sm-9">
-                  <input type="checkbox" class="form-control" id="dnsqname" name="dnsqname" aria-describedby="dnsqname-help">
+                  <input type="radio" name="dnsqname" value="y" class=""> Yes &nbsp;&nbsp;&nbsp;
+                  <input type="radio" name="dnsqname" value="n" class=""> No &nbsp;&nbsp;&nbsp;
+                  <input type="radio" name="dnsqname" value="dontknow" class="dont-generate" checked> Don't know / Don't want to say
                   <small id="dnsqname-help" class="form-text text-muted">
                     This field is only relevant for exit relays, non-exit relays SHOULD NOT set this field.
                     Character stating whether this exit relay is performing DNS QNAME minimization ("y") or not ("n"). QNAME minimization is defined in <a href="https://datatracker.ietf.org/doc/rfc7816/">RFC7816</a>
@@ -332,7 +348,9 @@
               <div class="form-group row exit-relay-only">
                 <label for="dnslocalrootzone" class="col-sm-3 col-form-label">Does your resolver run the root zone on loopback?</label>
                 <div class="col-sm-9">
-                  <input type="checkbox" class="form-control" id="dnslocalrootzone" name="dnslocalrootzone" aria-describedby="dnslocalrootzone-help">
+                  <input type="radio" name="dnslocalrootzone" value="y" class=""> Yes &nbsp;&nbsp;&nbsp;
+                  <input type="radio" name="dnslocalrootzone" value="n" class=""> No &nbsp;&nbsp;&nbsp;
+                  <input type="radio" name="dnslocalrootzone" value="dontknow" class="dont-generate" checked> Don't know / Don't want to say
                   <small id="dnslocalrootzone-help" class="form-text text-muted">
                     This field is only relevant for exit relays, non-exit relays SHOULD NOT set this field.
 
