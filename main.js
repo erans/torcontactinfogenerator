@@ -49,7 +49,7 @@ $(document).ready( function() {
         }
       } else {
         var value = element.val();
-        if (name == "email" || name == "xmpp") {
+        if (name == "email" || name == "xmpp" || name == "abuse") {
           value = value.replace("@", "[]");
         }
 
