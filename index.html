@@ -281,9 +281,11 @@
               <div class="form-group row exit-relay-only">
                 <label for="dnssec" class="col-sm-3 col-form-label">Does your resolver perform DNSSEC validation?</label>
                 <div class="col-sm-9">
-                  <input type="checkbox" class="form-control" id="dnssec" name="dnssec" aria-describedby="dnssec-help">
+                  <input type="radio" name="dnssec" value="y" class=""> Yes &nbsp;&nbsp;&nbsp;
+                  <input type="radio" name="dnssec" value="n" class=""> No &nbsp;&nbsp;&nbsp;
+                  <input type="radio" name="dnssec" value="dontknow" class="dont-generate" checked> Don't know / Don't want to say
                   <small id="dnssec-help" class="form-text text-muted">
-                    This field is only relevant for exit relays, non-exit relays SHOULD NOT set this field. States if this relay performs DNSSEC validation.
+                    States if this relay performs DNSSEC validation.
                   </small>
                 </div>
               </div>

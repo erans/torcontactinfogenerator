@@ -38,7 +38,7 @@ $(document).ready( function() {
       if (element.hasClass("dont-generate")) {
         continue;
       }
-      var name = element.attr("id")
+      var name = element.attr("id");
       var type = element.attr("type");
 
       if (type == "checkbox") {
@@ -46,6 +46,12 @@ $(document).ready( function() {
           result.push(name + ":y");
         } else {
           //value = "n";
+        }
+      }  else if (type == "radio") {
+        name = element.attr("name");
+        var value = element.val();
+        if (element.is(":checked")) {
+          result.push(name + ":" + value);
         }
       } else {
         var value = element.val();
