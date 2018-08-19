@@ -27,6 +27,27 @@ $(document).ready( function() {
     }
   });
 
+  $("input[name=offlinemasterkey]").click( function(event) {
+    var value = $(this).val();
+    if (value == "y") {
+      $(".offlinemasterkey-y").removeClass("hide");
+    } else {
+      $(".offlinemasterkey-y").addClass("hide");
+    }
+  });
+
+  $(".turn-it-on").click( function(event) {
+    var element = $(this);
+    var turnOnKey = "." + element.attr("name") + "-" + element.attr("value");
+
+    var turnOnElements = $(turnOnKey);
+    var turnOnElementsLength = turnOnElements.length;
+
+    for (var i = 0; i < turnOnElementsLength; i++) {
+      $(turnOnElements[i]).removeClass("hide");
+    }
+  });
+
   $("#generate-button").click(function(event) {
     var result = new Array();
     event.preventDefault();
