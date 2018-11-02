@@ -50,6 +50,7 @@ $(document).ready( function() {
 
   $("#generate-button").click(function(event) {
     var result = new Array();
+    result.push("ContactInfo");
     event.preventDefault();
 
     var inputs = $("input");
