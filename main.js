@@ -51,7 +51,7 @@ $(document).ready( function() {
   $("#generate-button").click(function(event) {
     var result = new Array();
     result.push("ContactInfo");
-    event.preventDefault();
+    event.preventDefault();    
 
     var inputs = $("input");
     var inputsLength = inputs.length;
@@ -62,6 +62,12 @@ $(document).ready( function() {
       }
       var name = element.attr("id");
       var type = element.attr("type");
+
+      if (name == "email" && element.val() == "") {
+        alert("Email is required");
+        $("#email").focus();
+        return;
+      }
 
       if (type == "checkbox") {
         if (element.prop("checked")) {
