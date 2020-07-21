@@ -106,9 +106,9 @@
                 </div>
               </div>
               <div class="form-group row">
-                <label for="bitmessage" class="col-sm-3 col-form-label">Bitmessage Handle </label>
+                <label for="matrix" class="col-sm-3 col-form-label"><a href="https://matrix.org/">Matrix</a> <a href="https://matrix.org/docs/spec/appendices#user-identifiers">user identifier</a> </label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" id="bitmessage" name="bitmessage">
+                  <input type="text" class="form-control" id="matrix" name="matrix">
                 </div>
               </div>
             </div>
@@ -238,19 +238,6 @@
                   <small id="sandbox-help" class="form-text text-muted">Single character stating whether this instance runs with <a href="https://www.torproject.org/docs/tor-manual.html.en#Sandbox">Sandbox</a> enabled</small>
                 </div>
               </div>
-              <div class="form-group row">
-                <label for="scheduler" class="col-sm-3 col-form-label">What Scheduler does the relay use?</label>
-                <div class="col-sm-9">
-                  <select class="custom-select" name="scheduler" id="scheduler">
-                    <option value="dontknow" selected>Don't know / don't want to say</option>
-                    <option value="default">default</option>
-                    <option value="KIST">KIST</option>
-                    <option value="KISTLite">KISTLite</option>
-                    <option value="Vanilla">Vanilla</option>
-                  </select>
-                  <small id="scheduler-help" class="form-text text-muted">Value as configured with the torrc <a href="https://www.torproject.org/docs/tor-manual-dev.html.en#Schedulers">scheduler</a> option or "default" for no explicit configuration. This field MUST be omitted on tor releases that do not support this feature (<0.3.2.1-alpha)</small>
-                </div>
-              </div>
             </div>
           </div>
           <br/>
@@ -375,6 +362,7 @@
             </div>
           </div>
           <br/>
+          <input id="ciissversion" name="ciissversion" value="1" class="hide" />
           <button id="generate-button" type="submit" class="btn btn-primary">Generate</button>
           <br/><br/>
           Copy the following line into your torrc configuration file and reload your tor daemon:
