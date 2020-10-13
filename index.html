@@ -31,19 +31,20 @@
                 </div>
               </div>
               <div class="form-group row">
+                <label for="url" class="col-sm-3 col-form-label">URL</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="url" name="url" maxlength="400">
+                  <small id="operatorurl-help" class="form-text text-muted">This field contains an URL (or hostname) pointing to the website of the entity (organization or person) responsible for this Tor relay.</small>
+                </div>
+              </div>
+              <div class="form-group row">
                 <label for="abuse" class="col-sm-3 col-form-label">Abuse Email </label>
                 <div class="col-sm-9">
                   <input type="abuse" class="form-control" id="abuse" name="abuse">
                   <small id="abuse-help" class="form-text text-muted">Abuse email address where abuse emails should be send</small>
                 </div>
               </div>
-              <div class="form-group row">
-                <label for="operatorurl" class="col-sm-3 col-form-label">Operator URL </label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="operatorurl" name="operatorurl" maxlength="253">
-                  <small id="operatorurl-help" class="form-text text-muted">The website of the operator. This value SHOULD be consistent across all relays of an operator. This can be a clearnet or .onion url</small>
-                </div>
-              </div>
+
               <div class="form-group row">
                 <label for="verifyurl" class="col-sm-3 col-form-label">Verify URL </label>
                 <div class="col-sm-9">
