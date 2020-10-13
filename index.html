@@ -38,6 +38,15 @@
                 </div>
               </div>
               <div class="form-group row">
+                <label for="proof" class="col-sm-3 col-form-label">What proof method would you like to use?</label>
+                <div class="col-sm-9">
+                  <input type="radio" name="proof" value="uri-rsa" class=""> uri-rsa (recommended) &nbsp;&nbsp;&nbsp;
+                  <input type="radio" name="proof" value="dns-rsa" class=""> dns-rsa &nbsp;&nbsp;&nbsp;
+                  <input type="radio" name="proof" value="dontknow" class="dont-generate" checked> None
+                  <small id="proof-help" class="form-text text-muted">The <a href="https://nusenu.github.io/ContactInfo-Information-Sharing-Specification/#proof">proof</a> field allows operators to authenticate the url value.</small>
+                </div>
+              </div>
+              <div class="form-group row">
                 <label for="abuse" class="col-sm-3 col-form-label">Abuse Email </label>
                 <div class="col-sm-9">
                   <input type="abuse" class="form-control" id="abuse" name="abuse">
