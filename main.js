@@ -63,12 +63,6 @@ $(document).ready( function() {
       var name = element.attr("id");
       var type = element.attr("type");
 
-      if (name == "email" && element.val() == "") {
-        alert("Email is required");
-        $("#email").focus();
-        return;
-      }
-
       if (type == "checkbox") {
         if (element.prop("checked")) {
           result.push(name + ":y");

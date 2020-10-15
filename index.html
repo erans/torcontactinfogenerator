@@ -27,7 +27,7 @@
                 <label for="email" class="col-sm-3 col-form-label">Email </label>
                 <div class="col-sm-9">
                   <input type="email" class="form-control" id="email" name="email" data-error="Email address is required" required>
-                  <small id="email-help" class="form-text text-muted">Email address where the operator can be reached</small>
+                  <small id="email-help" class="form-text text-muted">This field contains the email address of the technical contact managing this Tor relay.</small>
                 </div>
               </div>
               <div class="form-group row">
@@ -38,18 +38,19 @@
                 </div>
               </div>
               <div class="form-group row">
+                <label for="proof" class="col-sm-3 col-form-label">What proof method would you like to use?</label>
+                <div class="col-sm-9">
+                  <input type="radio" name="proof" value="uri-rsa" class=""> <a href="https://nusenu.github.io/ContactInfo-Information-Sharing-Specification/#uri-rsa">uri-rsa</a> (recommended) &nbsp;&nbsp;&nbsp;
+                  <input type="radio" name="proof" value="dns-rsa" class=""> <a href="https://nusenu.github.io/ContactInfo-Information-Sharing-Specification/#dns-rsa">dns-rsa</a> &nbsp;&nbsp;&nbsp;
+                  <input type="radio" name="proof" value="dontknow" class="dont-generate" checked> None
+                  <small id="proof-help" class="form-text text-muted">The <a href="https://nusenu.github.io/ContactInfo-Information-Sharing-Specification/#proof">proof</a> field allows operators to make the url value verifyable.</small>
+                </div>
+              </div>
+              <div class="form-group row">
                 <label for="abuse" class="col-sm-3 col-form-label">Abuse Email </label>
                 <div class="col-sm-9">
                   <input type="abuse" class="form-control" id="abuse" name="abuse">
                   <small id="abuse-help" class="form-text text-muted">Abuse email address where abuse emails should be send</small>
-                </div>
-              </div>
-
-              <div class="form-group row">
-                <label for="verifyurl" class="col-sm-3 col-form-label">Verify URL </label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="verifyurl" name="verifyurl" maxlength="253">
-                  <small id="operatorurl-help" class="form-text text-muted">This URL points to a simple text file that contains all relay fingerprints (one per line) of the organization and can be used to automatically verify the operatorurl claim. All relays contained in the file must use the verifyurl field for bidirectional verification. Unidirectional commitments are not considered verified. The file may contain comments (lines starting with #). All relays of the operator's relay family (MyFamily setting) must be listed in the file. The verifyurl MUST be on the same domain as the operatorurl.</small>
                 </div>
               </div>
               <div class="form-group row">
@@ -61,11 +62,11 @@
                     </div>
                     <input type="text" class="form-control" id="gpg" name="gpg" aria-describedby="gpg-help" maxlength="40">
                   </div>
-                  <small id="gpg-help" class="form-text text-muted">PGP key fingerprint (long form) without spaces. Case insensitive.</small>
+                  <small id="gpg-help" class="form-text text-muted">PGP key fingerprint (long form) without spaces. This key should be available on <a href="https://keys.openpgp.org">keys.openpgp.org</a></small>
                 </div>
               </div>
               <div class="form-group row">
-                <label for="keybase" class="col-sm-3 col-form-label">Keybase Username </label>
+                <label for="keybase" class="col-sm-3 col-form-label">keybase.io Username </label>
                 <div class="col-sm-9">
                   <input type="text" class="form-control" id="keybase" name="keybase" maxlength="49">
                 </div>
@@ -88,6 +89,12 @@
                 </div>
               </div>
               <div class="form-group row">
+                <label for="matrix" class="col-sm-3 col-form-label"><a href="https://matrix.org/">Matrix</a> <a href="https://matrix.org/docs/spec/appendices#user-identifiers">user identifier</a> </label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="matrix" name="matrix">
+                </div>
+              </div>              
+              <div class="form-group row">
                 <label for="xmpp" class="col-sm-3 col-form-label">XMPP Handle </label>
                 <div class="col-sm-9">
                   <input type="text" class="form-control" id="xmpp" name="xmpp" maxlength="253">
@@ -98,18 +105,6 @@
                 <div class="col-sm-9">
                   <input type="text" class="form-control" id="otr3" name="otr3" maxlength="40">
                   <small id="otr3-help" class="form-text text-muted">OTR v3 key fingerprint without spaces. Case in-sensitive. This key fingerprint relates to the xmpp address given in the xmpp field.</small>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="ricochet" class="col-sm-3 col-form-label">Ricochet Handle </label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="ricochet" name="ricochet" maxlength="16">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="matrix" class="col-sm-3 col-form-label"><a href="https://matrix.org/">Matrix</a> <a href="https://matrix.org/docs/spec/appendices#user-identifiers">user identifier</a> </label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="matrix" name="matrix">
                 </div>
               </div>
             </div>
@@ -188,17 +183,24 @@
             <div class="card-header">Donation Information</div>
             <div class="card-body">
               <div class="form-group row">
-                <label for="bitcoin" class="col-sm-3 col-form-label">Bitcoin Address</label>
+                <label for="btc" class="col-sm-3 col-form-label">Bitcoin Address</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" id="bitcoin" name="bitcoin" aria-describedby="bitcoin-help" maxlength="99">
-                  <small id="bitcoin-help" class="form-text text-muted">Bitcoin address where people are expected to send donations to support the operation of this tor relay.</small>
+                  <input type="text" class="form-control" id="btc" name="btc" aria-describedby="bitcoin-help" maxlength="99">
+                  <small id="bitcoin-help" class="form-text text-muted">Bitcoin or OpenAlias address where people can send donations to support the operation of this Tor relay.</small>
                 </div>
               </div>
               <div class="form-group row">
-                <label for="zcash" class="col-sm-3 col-form-label">ZCash Address</label>
+                <label for="zec" class="col-sm-3 col-form-label">Zcash Address</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" id="zcash" name="zcash" aria-describedby="zcash-help" maxlength="95">
-                  <small id="zcash-help" class="form-text text-muted">ZCash address where people are expected send donations to support the operation of this tor relay.</small>
+                  <input type="text" class="form-control" id="zec" name="zec" aria-describedby="zcash-help" maxlength="95">
+                  <small id="zcash-help" class="form-text text-muted">Zcash address where people are expected send donations to support the operation of this tor relay.</small>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="xmr" class="col-sm-3 col-form-label">Monero Address</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="xmr" name="xmr" aria-describedby="xmr-help" maxlength="99">
+                  <small id="xmr-help" class="form-text text-muted">Monero or OpenAlias address where people can send donations to support the operation of this Tor relay.</small>
                 </div>
               </div>
               <div class="form-group row">
@@ -363,7 +365,7 @@
             </div>
           </div>
           <br/>
-          <input id="ciissversion" name="ciissversion" value="1" class="hide" />
+          <input id="ciissversion" name="ciissversion" value="2" class="hide" />
           <button id="generate-button" type="submit" class="btn btn-primary">Generate</button>
           <br/><br/>
           Copy the following line into your torrc configuration file and reload your tor daemon:
