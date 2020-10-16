@@ -1,4 +1,6 @@
-# torcontactinfogenerator
+# Tor ContactInfo Generator
 Tor ContactInfo Generator to create ContactInfo strings according to this specification:
 
-https://github.com/nusenu/ContactInfo-Information-Sharing-Specification
+https://nusenu.github.io/ContactInfo-Information-Sharing-Specification/
+
+The generator is available at: https://torcontactinfogenerator.netlify.com
