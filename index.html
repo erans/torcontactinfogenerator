@@ -43,7 +43,7 @@
                   <input type="radio" name="proof" value="uri-rsa" class=""> <a href="https://nusenu.github.io/ContactInfo-Information-Sharing-Specification/#uri-rsa">uri-rsa</a> (recommended) &nbsp;&nbsp;&nbsp;
                   <input type="radio" name="proof" value="dns-rsa" class=""> <a href="https://nusenu.github.io/ContactInfo-Information-Sharing-Specification/#dns-rsa">dns-rsa</a> &nbsp;&nbsp;&nbsp;
                   <input type="radio" name="proof" value="dontknow" class="dont-generate" checked> None
-                  <small id="proof-help" class="form-text text-muted">The <a href="https://nusenu.github.io/ContactInfo-Information-Sharing-Specification/#proof">proof</a> field allows operators to make the URL value (previous field) verifyable by creating DNS TXT records or placing relay fingerprints in the file /.well-known/tor-relay/rsa-fingerprint.txt on the webserver.</small>
+                  <small id="proof-help" class="form-text text-muted">The <a href="https://nusenu.github.io/ContactInfo-Information-Sharing-Specification/#proof">proof</a> field allows operators to make their URL value (previous field) verifyable (protected against spoofing) by placing their relay fingerprints in a text file located on their website. If no website is available DNS TXT records can be used instead.</small>
                 </div>
               </div>
               <div class="form-group row">
